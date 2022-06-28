@@ -1,0 +1,692 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="APILogin">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="150" />
+          <Property Name="createdon" Type="datetime" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+          <Property Name="Organization" Type="varchar" MaxLength="50" />
+          <Property Name="UserRole" Type="varchar" MaxLength="50" />
+          <Property Name="OrgKRAPIN" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="PhysicalAddress" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="APIUsage">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Purpose" Type="varchar" MaxLength="500" />
+          <Property Name="DataRequirements" Type="varchar(max)" />
+          <Property Name="ReasonID" Type="int" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="150" />
+          <Property Name="mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Q1" Type="int" />
+          <Property Name="Q1Ans" Type="varchar" MaxLength="50" />
+          <Property Name="Q2" Type="int" />
+          <Property Name="Q2Ans" Type="varchar" MaxLength="50" />
+          <Property Name="LoginAttempts" Type="int" />
+          <Property Name="Locked" Type="bit" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID_Number" />
+          </Key>
+          <Property Name="ID_Number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="100" />
+          <Property Name="First_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Other_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Date_of_Birth" Type="date" />
+          <Property Name="Citizenship" Type="varchar" MaxLength="100" />
+          <Property Name="Clan" Type="varchar" MaxLength="100" />
+          <Property Name="Ethnic_Group" Type="varchar" MaxLength="100" />
+          <Property Name="Family" Type="varchar" MaxLength="100" />
+          <Property Name="Serial_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Place_of_Birth" Type="varchar" MaxLength="500" />
+          <Property Name="Place_of_Live" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Person_IDs">
+          <Key>
+            <PropertyRef Name="ID_Number" />
+          </Key>
+          <Property Name="ID_Number" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="KRAPIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="50" />
+          <Property Name="NHIF" Type="varchar" MaxLength="50" />
+          <Property Name="NSSF" Type="varchar" MaxLength="50" />
+          <Property Name="PASSPORT" Type="varchar" MaxLength="20" />
+          <Property Name="Processed" Type="bit" />
+        </EntityType>
+        <EntityType Name="Person_Search_Log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Number" Type="varchar" MaxLength="20" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="Found" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Person_Tmp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="ID_Number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="100" />
+          <Property Name="First_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Other_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Date_of_Birth" Type="date" />
+          <Property Name="Citizenship" Type="varchar" MaxLength="100" />
+          <Property Name="Clan" Type="varchar" MaxLength="100" />
+          <Property Name="Ethnic_Group" Type="varchar" MaxLength="100" />
+          <Property Name="Family" Type="varchar" MaxLength="100" />
+          <Property Name="Serial_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Place_of_Birth" Type="varchar" MaxLength="500" />
+          <Property Name="Place_of_Live" Type="varchar" MaxLength="500" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Processed" Type="bit" />
+        </EntityType>
+        <EntityType Name="STATIC_DATA_USE_REASON">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="varchar" MaxLength="1" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="STATIC_REGISTER_QUESTION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="UserRoleAssignment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="varchar" MaxLength="50" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="ScopeID" Type="int" />
+          <Property Name="SiteCode" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyData.dbo.vw_Applications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Applications">
+          <Key>
+            <PropertyRef Name="username" />
+            
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="active" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Organization" Type="varchar" MaxLength="50" />
+          <Property Name="UserRole" Type="varchar" MaxLength="50" />
+          <Property Name="OrgKRAPIN" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="PhysicalAddress" Type="varchar" MaxLength="500" />
+          <Property Name="Purpose" Type="varchar" MaxLength="500" />
+          <Property Name="DataRequirements" Type="varchar(max)" />
+          <Property Name="ReasonID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MyData.dbo.vw_OrganizationInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_OrganizationInfo">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+          <Property Name="Organization" Type="varchar" MaxLength="50" />
+          <Property Name="UserRole" Type="varchar" MaxLength="50" />
+          <Property Name="OrgKRAPIN" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="PhysicalAddress" Type="varchar" MaxLength="500" />
+          <Property Name="Purpose" Type="varchar" MaxLength="500" />
+          <Property Name="DataRequirements" Type="varchar(max)" />
+          <Property Name="ReasonID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="proc_GetDailySummaries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_GetDailySummariesForHomepage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_GetDailySummariesPerUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="muser" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_GetSummaryResources" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="MyDataModelStoreContainer">
+          <EntitySet Name="APILogin" EntityType="Self.APILogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APIUsage" EntityType="Self.APIUsage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person_IDs" EntityType="Self.Person_IDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person_Search_Log" EntityType="Self.Person_Search_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person_Tmp" EntityType="Self.Person_Tmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATIC_DATA_USE_REASON" EntityType="Self.STATIC_DATA_USE_REASON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATIC_REGISTER_QUESTION" EntityType="Self.STATIC_REGISTER_QUESTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleAssignment" EntityType="Self.UserRoleAssignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_Applications" EntityType="Self.vw_Applications" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Applications].[username] AS [username], 
+    [vw_Applications].[active] AS [active], 
+    [vw_Applications].[Organization] AS [Organization], 
+    [vw_Applications].[UserRole] AS [UserRole], 
+    [vw_Applications].[OrgKRAPIN] AS [OrgKRAPIN], 
+    [vw_Applications].[Mobile] AS [Mobile], 
+    [vw_Applications].[Email] AS [Email], 
+    [vw_Applications].[PhysicalAddress] AS [PhysicalAddress], 
+    [vw_Applications].[Purpose] AS [Purpose], 
+    [vw_Applications].[DataRequirements] AS [DataRequirements], 
+    [vw_Applications].[ReasonID] AS [ReasonID], 
+    [vw_Applications].[Description] AS [Description]
+    FROM [dbo].[vw_Applications] AS [vw_Applications]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_OrganizationInfo" EntityType="Self.vw_OrganizationInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_OrganizationInfo].[username] AS [username], 
+    [vw_OrganizationInfo].[active] AS [active], 
+    [vw_OrganizationInfo].[Organization] AS [Organization], 
+    [vw_OrganizationInfo].[UserRole] AS [UserRole], 
+    [vw_OrganizationInfo].[OrgKRAPIN] AS [OrgKRAPIN], 
+    [vw_OrganizationInfo].[Mobile] AS [Mobile], 
+    [vw_OrganizationInfo].[Email] AS [Email], 
+    [vw_OrganizationInfo].[PhysicalAddress] AS [PhysicalAddress], 
+    [vw_OrganizationInfo].[Purpose] AS [Purpose], 
+    [vw_OrganizationInfo].[DataRequirements] AS [DataRequirements], 
+    [vw_OrganizationInfo].[ReasonID] AS [ReasonID], 
+    [vw_OrganizationInfo].[Description] AS [Description]
+    FROM [dbo].[vw_OrganizationInfo] AS [vw_OrganizationInfo]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Person_IDs">
+          <Key>
+            <PropertyRef Name="ID_Number" />
+          </Key>
+          <Property Name="ID_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KRAPIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NHIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NSSF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASSPORT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Processed" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="MyDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Person_IDs" EntityType="Self.Person_IDs" />
+          <EntitySet Name="APILogins" EntityType="MyDataModel.APILogin" />
+          <EntitySet Name="Logins" EntityType="MyDataModel.Login" />
+          <EntitySet Name="STATIC_REGISTER_QUESTION" EntityType="MyDataModel.STATIC_REGISTER_QUESTION" />
+          <EntitySet Name="UserRoleAssignments" EntityType="MyDataModel.UserRoleAssignment" />
+          <EntitySet Name="APIUsages" EntityType="MyDataModel.APIUsage" />
+          <EntitySet Name="STATIC_DATA_USE_REASON" EntityType="MyDataModel.STATIC_DATA_USE_REASON" />
+          <EntitySet Name="vw_OrganizationInfo" EntityType="MyDataModel.vw_OrganizationInfo" />
+          <EntitySet Name="Person_Search_Log" EntityType="MyDataModel.Person_Search_Log" />
+          <EntitySet Name="vw_Applications" EntityType="MyDataModel.vw_Applications" />
+          <FunctionImport Name="proc_GetDailySummaries" ReturnType="Collection(MyDataModel.proc_GetDailySummaries_Result)" />
+          <FunctionImport Name="proc_GetDailySummariesForHomepage" ReturnType="Collection(MyDataModel.proc_GetDailySummariesForHomepage_Result)" />
+          <FunctionImport Name="proc_GetDailySummariesPerUser" ReturnType="Collection(MyDataModel.proc_GetDailySummariesPerUser_Result)">
+          <Parameter Name="muser" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_GetSummaryResources" ReturnType="Collection(MyDataModel.proc_GetSummaryResources_Result)" />
+          <EntitySet Name="People" EntityType="MyDataModel.Person" />
+          <EntitySet Name="Person_Tmp" EntityType="MyDataModel.Person_Tmp" />
+        </EntityContainer>
+        <EntityType Name="APILogin">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="3" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrgKRAPIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PhysicalAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Q1" Type="Int32" />
+          <Property Name="Q1Ans" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Q2" Type="Int32" />
+          <Property Name="Q2Ans" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginAttempts" Type="Int32" />
+          <Property Name="Locked" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="STATIC_REGISTER_QUESTION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserRoleAssignment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="ScopeID" Type="Int32" />
+          <Property Name="SiteCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="APIUsage">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DataRequirements" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReasonID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="STATIC_DATA_USE_REASON">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_OrganizationInfo">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrgKRAPIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PhysicalAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DataRequirements" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReasonID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Person_Search_Log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="Found" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Applications">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrgKRAPIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PhysicalAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DataRequirements" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReasonID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="proc_GetDailySummaries_Result">
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DateSearched" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Internal" Nullable="false" />
+          <Property Type="Int32" Name="External" Nullable="false" />
+          <Property Type="Int32" Name="Not_Found" Nullable="false" />
+          <Property Type="Int32" Name="Illegal" Nullable="false" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_GetDailySummariesForHomepage_Result">
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DateSearched" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Internal" Nullable="false" />
+          <Property Type="Int32" Name="External" Nullable="false" />
+          <Property Type="Int32" Name="Not_Found" Nullable="false" />
+          <Property Type="Int32" Name="Illegal" Nullable="false" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_GetDailySummariesPerUser_Result">
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DateSearched" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Internal" Nullable="false" />
+          <Property Type="Int32" Name="External" Nullable="false" />
+          <Property Type="Int32" Name="Not_Found" Nullable="false" />
+          <Property Type="Int32" Name="Illegal" Nullable="false" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_GetSummaryResources_Result">
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="21" />
+          <Property Type="Int32" Name="Records" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID_Number" />
+          </Key>
+          <Property Name="ID_Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Other_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Date_of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Citizenship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Clan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ethnic_Group" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Family" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Serial_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Place_of_Birth" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Place_of_Live" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Person_Tmp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="ID_Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Other_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Date_of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Citizenship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Clan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ethnic_Group" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Family" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Serial_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Place_of_Birth" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Place_of_Live" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Processed" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyDataModelStoreContainer" CdmEntityContainer="MyDataEntities">
+          <EntitySetMapping Name="Person_IDs">
+            <EntityTypeMapping TypeName="MyDataModel.Person_IDs">
+              <MappingFragment StoreEntitySet="Person_IDs">
+                <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+                <ScalarProperty Name="KRAPIN" ColumnName="KRAPIN" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="NHIF" ColumnName="NHIF" />
+                <ScalarProperty Name="NSSF" ColumnName="NSSF" />
+                <ScalarProperty Name="PASSPORT" ColumnName="PASSPORT" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APILogins">
+            <EntityTypeMapping TypeName="MyDataModel.APILogin">
+              <MappingFragment StoreEntitySet="APILogin">
+                <ScalarProperty Name="PhysicalAddress" ColumnName="PhysicalAddress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="OrgKRAPIN" ColumnName="OrgKRAPIN" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="MyDataModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
+                <ScalarProperty Name="Q2Ans" ColumnName="Q2Ans" />
+                <ScalarProperty Name="Q2" ColumnName="Q2" />
+                <ScalarProperty Name="Q1Ans" ColumnName="Q1Ans" />
+                <ScalarProperty Name="Q1" ColumnName="Q1" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATIC_REGISTER_QUESTION">
+            <EntityTypeMapping TypeName="MyDataModel.STATIC_REGISTER_QUESTION">
+              <MappingFragment StoreEntitySet="STATIC_REGISTER_QUESTION">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleAssignments">
+            <EntityTypeMapping TypeName="MyDataModel.UserRoleAssignment">
+              <MappingFragment StoreEntitySet="UserRoleAssignment">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="SiteCode" ColumnName="SiteCode" />
+                <ScalarProperty Name="ScopeID" ColumnName="ScopeID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APIUsages">
+            <EntityTypeMapping TypeName="MyDataModel.APIUsage">
+              <MappingFragment StoreEntitySet="APIUsage">
+                <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+                <ScalarProperty Name="DataRequirements" ColumnName="DataRequirements" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATIC_DATA_USE_REASON">
+            <EntityTypeMapping TypeName="MyDataModel.STATIC_DATA_USE_REASON">
+              <MappingFragment StoreEntitySet="STATIC_DATA_USE_REASON">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_OrganizationInfo">
+            <EntityTypeMapping TypeName="MyDataModel.vw_OrganizationInfo">
+              <MappingFragment StoreEntitySet="vw_OrganizationInfo">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+                <ScalarProperty Name="DataRequirements" ColumnName="DataRequirements" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="PhysicalAddress" ColumnName="PhysicalAddress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="OrgKRAPIN" ColumnName="OrgKRAPIN" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person_Search_Log">
+            <EntityTypeMapping TypeName="MyDataModel.Person_Search_Log">
+              <MappingFragment StoreEntitySet="Person_Search_Log">
+                <ScalarProperty Name="Found" ColumnName="Found" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Applications">
+            <EntityTypeMapping TypeName="MyDataModel.vw_Applications">
+              <MappingFragment StoreEntitySet="vw_Applications">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+                <ScalarProperty Name="DataRequirements" ColumnName="DataRequirements" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="PhysicalAddress" ColumnName="PhysicalAddress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="OrgKRAPIN" ColumnName="OrgKRAPIN" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="proc_GetDailySummaries" FunctionName="MyDataModel.Store.proc_GetDailySummaries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MyDataModel.proc_GetDailySummaries_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="DateSearched" ColumnName="DateSearched" />
+                <ScalarProperty Name="Internal" ColumnName="Internal" />
+                <ScalarProperty Name="External" ColumnName="External" />
+                <ScalarProperty Name="Not_Found" ColumnName="Not Found" />
+                <ScalarProperty Name="Illegal" ColumnName="Illegal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_GetDailySummariesForHomepage" FunctionName="MyDataModel.Store.proc_GetDailySummariesForHomepage">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MyDataModel.proc_GetDailySummariesForHomepage_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="DateSearched" ColumnName="DateSearched" />
+                <ScalarProperty Name="Internal" ColumnName="Internal" />
+                <ScalarProperty Name="External" ColumnName="External" />
+                <ScalarProperty Name="Not_Found" ColumnName="Not Found" />
+                <ScalarProperty Name="Illegal" ColumnName="Illegal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_GetDailySummariesPerUser" FunctionName="MyDataModel.Store.proc_GetDailySummariesPerUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MyDataModel.proc_GetDailySummariesPerUser_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="DateSearched" ColumnName="DateSearched" />
+                <ScalarProperty Name="Internal" ColumnName="Internal" />
+                <ScalarProperty Name="External" ColumnName="External" />
+                <ScalarProperty Name="Not_Found" ColumnName="Not Found" />
+                <ScalarProperty Name="Illegal" ColumnName="Illegal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_GetSummaryResources" FunctionName="MyDataModel.Store.proc_GetSummaryResources">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MyDataModel.proc_GetSummaryResources_Result">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Records" ColumnName="Records" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="MyDataModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Place_of_Live" ColumnName="Place_of_Live" />
+                <ScalarProperty Name="Place_of_Birth" ColumnName="Place_of_Birth" />
+                <ScalarProperty Name="Serial_Number" ColumnName="Serial_Number" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Ethnic_Group" ColumnName="Ethnic_Group" />
+                <ScalarProperty Name="Clan" ColumnName="Clan" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Other_Name" ColumnName="Other_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person_Tmp">
+            <EntityTypeMapping TypeName="MyDataModel.Person_Tmp">
+              <MappingFragment StoreEntitySet="Person_Tmp">
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Place_of_Live" ColumnName="Place_of_Live" />
+                <ScalarProperty Name="Place_of_Birth" ColumnName="Place_of_Birth" />
+                <ScalarProperty Name="Serial_Number" ColumnName="Serial_Number" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Ethnic_Group" ColumnName="Ethnic_Group" />
+                <ScalarProperty Name="Clan" ColumnName="Clan" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Other_Name" ColumnName="Other_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

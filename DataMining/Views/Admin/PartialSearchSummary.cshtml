@@ -1,0 +1,56 @@
+﻿@model List<DataMining.DataAccess.proc_GetDailySummariesForHomepage_Result>
+@Html.ActionLink("Account Search Summary", "ManageUsers", "Admin", new { area = "" }, null)
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DateSearched)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Internal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().External)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Not_Found)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Illegal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Total)
+        </th>
+        <th></th>
+    </tr>
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].username, new { @class = "username" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].DateSearched, new { @class = "DateSearched" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].Internal, new { @class = "Internal" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].External, new { @class = "External" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].Not_Found, new { @class = "Not_Found" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].Illegal, new { @class = "Illegal" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].Total, new { @class = "Total" })
+            </td>
+        </tr>
+    }
+
+</table>

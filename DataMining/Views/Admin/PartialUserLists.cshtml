@@ -1,0 +1,44 @@
+﻿@model List<DataMining.DataAccess.vw_Applications>
+@Html.ActionLink("View Account Details", "ManageUsers", "Admin", new { area = "" }, null)
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Organization)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().OrgKRAPIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Mobile)
+        </th>
+        <th></th>
+    </tr>
+
+@for (int i = 0; i < Model.Count; i++)
+{ 
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model[i].active, new { @class = "active" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model[i].Organization, new { @class = "Organization" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model[i].OrgKRAPIN, new { @class = "OrgKRAPIN" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model[i].Description, new { @class = "Description" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model[i].Mobile, new { @class = "Mobile" })
+        </td>
+    </tr>
+}
+
+</table>

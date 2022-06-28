@@ -1,0 +1,25 @@
+﻿@model List<DataMining.DataAccess.proc_GetDailySummariesPerUser_Result>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DateSearched)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Total)
+        </th>
+        <th></th>
+    </tr>
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].DateSearched, new { @class = "DateSearched" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model[i].Total, new { @class = "Total" })
+            </td>
+        </tr>
+    }
+
+</table>

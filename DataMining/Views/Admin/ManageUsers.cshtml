@@ -1,0 +1,90 @@
+﻿@model IEnumerable<DataMining.DataAccess.vw_Applications>
+
+@{
+    ViewBag.Title = "Manage Users";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Manage System Users</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organization)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgKRAPIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhysicalAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Purpose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataRequirements)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReasonID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organization)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserRole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgKRAPIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhysicalAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Purpose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataRequirements)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReasonID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.username }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.username })
+        </td>
+    </tr>
+}
+
+</table>

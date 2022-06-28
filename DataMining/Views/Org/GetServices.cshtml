@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DataMining.DataAccess.STATIC_DATA_USE_REASON>
+
+@{
+    ViewBag.Title = "Identity Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Available Services</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Apply", "Apply", new { id=item.id }) 
+        </td>
+    </tr>
+    }
+</table>

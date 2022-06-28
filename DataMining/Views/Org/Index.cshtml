@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DataMining.Models.OrgViewModel2>
+@{
+    ViewBag.Title = "Index";
+    var mroles = (string)Session["myroles"];
+    List<DataMining.DataAccess.proc_GetDailySummariesPerUser_Result> mysumlist = ViewBag.mysummarylist;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ActionLink("View Services", "GetServices", "Org", new { area = "" }, null)
+
+<h2>Applications</h2>
+<hr />
+@Html.ActionLink("Apply a Service", "Apply", "Org", new { area = "" }, null)
+<hr />
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgKRAPIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organization)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReasonDescription)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrgKRAPIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Organization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReasonDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.username })
+            </td>
+        </tr>
+    }
+</table>
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <h3>Search Records</h3>
+            @Html.Partial("PartialSearches", mysumlist)
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            <h3>Search</h3>
+            @Html.Partial("PartialSearch")
+        </p>
+    </div>
+</div>
+

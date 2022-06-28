@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var mroles = (string)Session["myroles"]; 
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<DataMining.DataAccess.vw_Applications> mylist = ViewBag.myuserlist;
+    List<DataMining.DataAccess.proc_GetDailySummariesForHomepage_Result> mysumlist = ViewBag.mysummarylist;
+    List<DataMining.DataAccess.proc_GetSummaryResources_Result> myreslist = ViewBag.myresourcelist;
+}
+
+<h2>Admin Panel</h2>
+<hr />
+<script src="~/Scripts/jquery.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <h3>Clients</h3>
+        </p>
+        @Html.Partial("PartialUserLists", mylist)
+    </div>
+    <div class="col-md-6">
+        <p>
+            <h3>Search Records</h3>
+            @Html.Partial("PartialSearchSummary", mysumlist)
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <h3>Resources Available</h3>
+            @Html.Partial("PartialResources", myreslist)
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            <h3>Search</h3>
+            @Html.Partial("PartialSearch")
+        </p>
+    </div>
+</div>

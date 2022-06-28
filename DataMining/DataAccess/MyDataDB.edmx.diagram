@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="714a55233231419fa9115bd87235d178" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="MyDataModel.Person_IDs" Width="1.5" PointX="2.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDataModel.APILogin" Width="1.5" PointX="4.875" PointY="0.625" />
+        <EntityTypeShape EntityType="MyDataModel.Login" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="MyDataModel.STATIC_REGISTER_QUESTION" Width="1.5" PointX="6.625" PointY="4.375" />
+        <EntityTypeShape EntityType="MyDataModel.UserRoleAssignment" Width="1.5" PointX="4.875" PointY="4.625" />
+        <EntityTypeShape EntityType="MyDataModel.APIUsage" Width="1.5" PointX="6.625" PointY="0.625" />
+        <EntityTypeShape EntityType="MyDataModel.STATIC_DATA_USE_REASON" Width="1.5" PointX="6.625" PointY="2.5" />
+        <EntityTypeShape EntityType="MyDataModel.vw_OrganizationInfo" Width="1.5" PointX="6.875" PointY="6.25" />
+        <EntityTypeShape EntityType="MyDataModel.Person_Search_Log" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="MyDataModel.vw_Applications" Width="1.5" PointX="2.75" PointY="7.25" />
+        <EntityTypeShape EntityType="MyDataModel.Person" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MyDataModel.Person_Tmp" Width="1.5" PointX="9.375" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
